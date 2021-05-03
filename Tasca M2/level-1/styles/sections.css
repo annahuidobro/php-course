@@ -1,0 +1,18 @@
+/** SECTIONS: 3 sections
+*/
+.section-container {
+    height: 192px;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.section {
+    float: left;
+    width: 326px;
+    height: 192px;
+    background-color: #858688;
+}
+
+.section-mid {
+    margin: 0 10px;
+}

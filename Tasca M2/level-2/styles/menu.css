@@ -1,0 +1,37 @@
+/**
+NAVIGATION: 4 options of menu
+ */
+.menu-container {
+    background-color: #97989a;
+    height: 48px;
+    width: 1000px;
+    margin: 20px auto;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+}
+
+ul {
+    margin: 0 2px;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+}
+
+li {
+    border-right: 4px solid #e6e7e9;
+    width: 196px;
+    height: 48px;
+    float: left;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.menu-five {
+    border-right: none;
+}
+
+a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #1a211a;
+}

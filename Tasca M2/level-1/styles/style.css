@@ -1,0 +1,27 @@
+body {
+    background-color: #e6e7e9;
+}
+
+/**
+only PAGE CONTENT. 3 sides
+*/
+.content-container {
+    height: 450px;
+    width: 1000px;
+    margin: 25px auto;
+}
+
+.content {
+    float: left;
+    width: 200px;
+    height: 450px;
+    background-color: #858688;
+}
+
+.content-center {
+    background-color: #4b4b4d;
+    height: 450px;
+    width: 600px;
+}
+
+
