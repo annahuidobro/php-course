@@ -1,0 +1,7 @@
+-- Select the glasses available for the each provider showing provider name, the brand of the glasses and the price of it
+SELECT pr.name, g.brand, g.price FROM optics_glasses g
+LEFT JOIN optics_providers pr on g.provider_id = pr.id;
+
+-- Select the provider with maximum price glasses showing the provider name, the brand name and it's price
+SELECT pr.name,g.brand, max(g.price) FROM optics_glasses g
+INNER JOIN optics_providers pr on g.provider_id = pr.id;

@@ -1,0 +1,18 @@
+-- Selection of the amount of likes of the videos of user1
+SELECT u.email, v.title, COUNT(l.id) FROM yt_users u
+LEFT  JOIN yt_videos v ON u.id = v.user_id
+LEFT JOIN yt_videos_lk_dslk l ON v.id = l.video_id AND l.type = 1
+WHERE u.id =1;
+
+-- Selection of the most used hastages 
+SELECT h.hastag, COUNT(r.id) FROM yt_hastags_rel r
+LEFT JOIN  yt_hastags h ON h.id = r.hastag_id
+GROUP BY r.hastag_id
+ORDER BY COUNT(r.id) DESC
+LIMIT 1;
+
+
+-- Select of videos names, description and it's likes (type 1) and dislikes (type 0)
+SELECT v.title,v.description,l.type,COUNT(l.video_id) FROM yt_videos v 
+LEFT JOIN yt_videos_lk_dslk l ON v.id = l.video_id
+GROUP BY v.id, l.type;
