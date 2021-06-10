@@ -1,0 +1,21 @@
+-- Filling  province_id of ps.employees table
+UPDATE ps_employes e SET co.province_id = (
+	SELECT p.id 
+	FROM ps_cities c 
+	LEFT JOIN ps_provinces p ON p.id = c.province_id 
+	WHERE c.id = e.city_id
+)
+
+-- Filling  province_id of ps.employees table
+UPDATE ps_employes e SET co.province_id = (
+	SELECT p.id 
+	FROM ps_cities c 
+	LEFT JOIN ps_provinces p ON p.id = c.province_id 
+	WHERE c.id = e.city_id
+)
+
+
+-- Select on the province name for a city
+SELECT c.city, c.province_id, p.name FROM ps_cities c
+LEFT JOIN ps_provinces p on p.id=c.province_id
+WHERE c.id=7568;
