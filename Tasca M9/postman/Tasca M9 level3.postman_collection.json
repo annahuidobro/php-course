@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "d5bf5be8-71ba-426d-a031-cc5ea044c05b",
+		"name": "Tasca M9 level1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Show Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Login + name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/login/Anna",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"login",
+						"Anna"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Register",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show api/user route",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show paises",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/paises",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post paises",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/paises",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show paises/{pais}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/paises/pais",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"pais"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put paises/{pais}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/tasca-m9/public/paises/pais",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"pais"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete paises/{pais}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Show paises/{pais}/departamentos/departamento}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/tasca-m9/public/paises/{pais}/departamentos/departamento}",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"{pais}",
+						"departamentos",
+						"departamento}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post paises/{pais}/departamentos/departamento}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/paises/{pais}/departamentos/departamento}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"{pais}",
+						"departamentos",
+						"departamento}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show paises/{pais}/departamentos/{departamento}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/paises/{pais}/departamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"{pais}",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put paises/{pais}/departamentos/{departamento}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/paises/{pais}/departamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"{pais}",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete paises/{pais}/departamentos/{departamento}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}:{{port}}/tasca-m9/public/paises/{pais}/departamentos/{departamento}",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"{pais}",
+						"departamentos",
+						"{departamento}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show paises/{pais}/departamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/paises/{pais}/departamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"{pais}",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post paises/{pais}/departamentos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m9/public/paises/{pais}/departamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m9",
+						"public",
+						"paises",
+						"{pais}",
+						"departamentos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
