@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "3431206e-32a0-4a11-8bc0-9e0a908e4a8d",
-		"name": "Tasca M9",
+		"name": "Tasca M9 level1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,11 +11,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/tasca-m9/public/",
+					"raw": "http://{{IP}}:{{port}}/tasca-m9/public/",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{IP}}"
 					],
+					"port": "{{port}}",
 					"path": [
 						"tasca-m9",
 						"public",
@@ -31,11 +32,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/tasca-m9/public/login/Anna",
+					"raw": "http://{{IP}}:{{port}}/tasca-m9/public/login/Anna",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{IP}}"
 					],
+					"port": "{{port}}",
 					"path": [
 						"tasca-m9",
 						"public",
@@ -52,11 +54,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/tasca-m9/public/register",
+					"raw": "http://{{IP}}:{{port}}/tasca-m9/public/register",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{IP}}"
 					],
+					"port": "{{port}}",
 					"path": [
 						"tasca-m9",
 						"public",
