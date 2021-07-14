@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "3fb158ca-3fc3-49e0-9669-e75b781f5ce1",
+		"name": "Tasca M10 - Level 1 - Excercise 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Home page with blade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}/tasca-m10/public/",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login with blade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}/tasca-m10/public/login",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show catalog with blade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}/tasca-m10/public/catalog",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"catalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Pitagoras Book Tab with blade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}/tasca-m10/public/catalog/show/Pitagoras",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"catalog",
+						"show",
+						"Pitagoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Pitagoras book with blade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}/tasca-m10/public/catalog/edit/Pitagoras",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"catalog",
+						"edit",
+						"Pitagoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book tab with blade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{IP}}/tasca-m10/public/catalog/create",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"catalog",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
