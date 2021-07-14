@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "3fb158ca-3fc3-49e0-9669-e75b781f5ce1",
+		"name": "Tasca M10 - Excercise 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Home page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m10/public/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login with name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m10/public/login/Anna",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"login",
+						"Anna"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login without name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m10/public/login/Anna",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"login",
+						"Anna"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loout with name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m10/public/login/Anna",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"login",
+						"Anna"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout without name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m10/public/login/Anna",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"login",
+						"Anna"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Pitagoras Book Tab",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m10/public/catalog/show/Pitagoras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"catalog",
+						"show",
+						"Pitagoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Pitagoras book tab",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m10/public/catalog/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"catalog",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book tab",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/tasca-m10/public/catalog/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tasca-m10",
+						"public",
+						"catalog",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
