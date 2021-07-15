@@ -23,6 +23,7 @@ This is the {{  $book['name'] }} edit  page with blade
 </head>
 <body>
 <h1>Delete of a Book tab</h1>
+<x-nav-bar></x-nav-bar>
 @if(count($errors) > 0)
     <div class="errors">
         <ul>

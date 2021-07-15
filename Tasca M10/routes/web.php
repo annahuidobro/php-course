@@ -5,6 +5,9 @@
 // use App\Http\Controllers\LoginController;
 // use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DeleteBookController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PassrecoveryController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShowCreateBookController;
 use App\Http\Controllers\ShowEditBookController;
 use App\Http\Controllers\StoreBookController;
@@ -67,10 +70,16 @@ Route::get('/', function () {
 });
 
 
-//Login route with blade
+//Login route with blade (excercise 2)
+/*
 Route::get('/login', function (){
     return view('login');
 });
+*/
+
+//Login route with blade (excercise 6)
+Route::get('/login', LoginController::class);
+Route::post('/login', LoginController::class);
 
 //Catalog routes with blade
 Route::get('/catalog', function(){
@@ -105,4 +114,22 @@ Route::patch('/catalog/edit/{id}', function($id){
 //Form rute (exercise 2)
 //Route::match(['get','post'],'input',TestRequestController::class);
 
+// Cookie test
+Route::get('CookieTest',LoginController::class);
 
+//Login route with blade (excercise 2)
+/*
+Route::get('/login', function (){
+    return view('login');
+});
+*/
+//Logout route with blade (excercise 6)
+Route::get('login',LoginController::class);
+
+//Register route with blade (excercise 6)
+Route::get('register', RegisterController::class);
+Route::post('register', RegisterController::class);
+
+//Password recovery route with blade (excercise 6)
+Route::get('passrecovery', PassrecoveryController::class);
+Route::post('passrecovery', PassrecoveryController::class);
