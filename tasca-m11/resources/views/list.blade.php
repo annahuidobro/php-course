@@ -5,8 +5,16 @@
 @endsection
 
 @section('content')
+    <form class="form" action="/tasca-m11/public/showcreate" method="get">
 
-
+        <div class="d-flex flex-row">
+            <div class="p-3">
+                <td>
+                    <button type="submit" class="btn btn-primary">New employee</button>
+                </td>
+            </div>
+        </div>
+    </form>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -36,12 +44,17 @@
                 </td>
                 <td>
                     <select class="form-control" name="department">
-                        <option @if($filter['department'] === 'NULL') selected @endif value="NULL"> </option>
+                        <option @if($filter['department'] === 'NULL') selected @endif value="NULL"></option>
                         <option @if($filter['department'] === 'rrhh') selected @endif value="rrhh">RRHH</option>
-                        <option @if($filter['department'] === 'tecnology') selected @endif value="tecnology">tecnology</option>
-                        <option @if($filter['department'] === 'concierge') selected @endif value="concierge">concierge</option>
-                        <option @if($filter['department'] === 'events department') selected @endif value="events department">events department</option>
-                        <option @if($filter['department'] === 'nursery') selected @endif value="nursery">nursery</option>
+                        <option @if($filter['department'] === 'tecnology') selected @endif value="tecnology">tecnology
+                        </option>
+                        <option @if($filter['department'] === 'concierge') selected @endif value="concierge">concierge
+                        </option>
+                        <option @if($filter['department'] === 'events department') selected
+                                @endif value="events department">events department
+                        </option>
+                        <option @if($filter['department'] === 'nursery') selected @endif value="nursery">nursery
+                        </option>
                         <option @if($filter['department'] === 'cook') selected @endif value="cook">cook</option>
                     </select>
                 </td>
