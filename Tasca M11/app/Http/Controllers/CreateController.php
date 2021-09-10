@@ -29,7 +29,8 @@ class CreateController extends Controller
         $employee->save();
 
 
-        return redirect('/home' . $request->get('id'));
+      //  return redirect('/home' . $request->get('id'));
+        return redirect()->route('show',['id'=>$request->id]);
     }
 
 }

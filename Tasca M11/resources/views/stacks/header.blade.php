@@ -1,6 +1,6 @@
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/tasca-m11/public/list"
+        <a href="{{ route('list') }}"
            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                  class="bi bi-people-fill me-2" viewBox="0 0 16 16">
@@ -13,7 +13,7 @@
         </a>
 
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/tasca-m11/public/list" class="nav-link active" aria-current="page">Go back to
+            <li class="nav-item"><a href="{{ route('list') }}" class="nav-link active" aria-current="page">Go back to
                     list</a></li>
         </ul>
     </header>

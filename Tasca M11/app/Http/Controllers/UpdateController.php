@@ -14,7 +14,6 @@ class UpdateController extends Controller
         return view('update', [
             'employee' => Employee::where('id', $id)->first(),
         ]);
-
     }
 }
 

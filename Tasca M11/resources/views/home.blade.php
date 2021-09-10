@@ -1,7 +1,6 @@
 @extends('base')
 
 <br />
-
 @section('content')
     <div class="container my-5">
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
@@ -14,12 +13,12 @@
         <div class="row gx-5">
             <div class="col">
                 <div class="p-3 borderlign-items-center">
-                    <a href="/tasca-m11/public/register">Register</a>
+                    <a href="{{ route('register') }}">Register</a>
                 </div>
             </div>
             <div class="col">
                 <div class="p-3 border lign-items-center">
-                    <a href="/tasca-m11/public/login">Login</a>
+                    <a href="{{ route('login') }}">Login</a>
                 </div>
             </div>
             <div class="col">

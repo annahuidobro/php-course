@@ -12,10 +12,10 @@
                     You're logged in!
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="/tasca-m11/public/list" >Go to employees list</a>
+                    <a href="{{ route('list') }}" >Go to employees list</a>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="/tasca-m11/public/" >Go home</a>
+                    <a href="{{ route('home') }}" >Go home</a>
                 </div>
             </div>
 

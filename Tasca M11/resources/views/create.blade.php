@@ -6,7 +6,7 @@
 @section('content')
     <div class="container my-5">
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-            <form class="form" action="/tasca-m11/public/create" method="post">
+            <form class="form" action="{{ route('create') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="id" value="{{ $employee ?? '' }}">
                 <label for="name">First:</label>
