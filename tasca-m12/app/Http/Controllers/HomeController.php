@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matches;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,7 +36,7 @@ class HomeController extends Controller
         $teams = $query->get();
         $arrayTeams = [];
 
-        foreach ($teams as $team) {
+        foreach (Team::all() as $team) {
             $arrayTeams[$team->id] = $team;
         }
 

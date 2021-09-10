@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container my-5">
-        <a href="/tasca-m12/public/home" class="btn btn-secondary">Go back to home page</a>
+        <a href="{{ route('home') }}" class="btn btn-secondary">Go back to home page</a>
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <form class="form" action="/tasca-m12/public/store" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>

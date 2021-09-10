@@ -6,7 +6,7 @@
     <div class="d-flex flex-row">
         <div class="p-3">
             <td>
-                <a href="/tasca-m12/public/show-create" class="btn btn-primary">New team</a>
+                <a href="{{ route('show-create') }}" class="btn btn-primary">New team</a>
             </td>
         </div>
     </div>
@@ -24,7 +24,7 @@
         </thead>
         <tbody>
         <tr>
-            <form class="form" action="/tasca-m12/public/home" method="get">
+            <form class="form" action="{{ route('home') }}" method="get">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <td>
                     <button type="submit" class="btn btn-primary">Search</button>
@@ -46,7 +46,7 @@
                 </td>
                 <td></td>
             </form>
-            <form class="form" action="/tasca-m12/public/home" method="get">
+            <form class="form" action="{{ route('home') }}" method="get">
                 <td>
                     <button type="submit" class="btn btn-primary">Clean</button>
                 </td>
@@ -55,7 +55,7 @@
         @foreach ($teams ?? '' as $team)
             <tr>
                 <th scope="row">
-                    <a href="/tasca-m12/public/show/{{$team->id}}" class="btn btn-primary">Show</a>
+                    <a href="{{ route('show_id', ['id' => $team->id]) }}" class="btn btn-primary">Show</a>
                 </th>
                 <td>{{$team->name}}</td>
                 <td>{{$team->coach}}</td>
@@ -71,7 +71,7 @@
                         <input type="hidden" name="id" value="{{$team->id}}">
                         <button type="Delete" class="btn btn-danger">Delete</button>
                     </form>
-                    <a href="/tasca-m12/public/update/{{$team->id}}" class="btn btn-warning">Modify</a>
+                    <a href="{{ route('update_id', ['id' => $team->id]) }}" class="btn btn-warning">Modify</a>
                 </td>
 
             </tr>
@@ -88,7 +88,7 @@
         <br/>
         <div class="p-3">
             <td>
-                <a href="/tasca-m12/public/show-create-match" class="btn btn-primary">New match</a>
+                <a href="{{ route('show-create-match') }}" class="btn btn-primary">New match</a>
             </td>
         </div>
     </div>
@@ -123,7 +123,7 @@
                         <input type="hidden" name="id" value="{{$match->id}}">
                         <button type="Delete" class="btn btn-danger">Delete</button>
                     </form>
-                    <a href="/tasca-m12/public/update-match/{{$match->id}}" class="btn btn-warning">Modify</a>
+                    <a href="{{ route('update-match_id',['id'=>$match->id])}}" class="btn btn-warning">Modify</a>
                 </td>
 
             </tr>
