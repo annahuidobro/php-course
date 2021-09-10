@@ -15,7 +15,7 @@ class DeleteController extends Controller
             $employee->delete();
         }
 
-        return redirect('/home');
+        return redirect()->route('list');
     }
 
 }

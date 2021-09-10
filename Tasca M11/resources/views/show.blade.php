@@ -16,8 +16,8 @@
                     {{$employee->department}}</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                     <td>
-                        <a href="/tasca-m11/public/update/{{$employee->id}}" class="btn btn-warning">Modify</a>
-                        <form class="form" action="/tasca-m11/public/delete/{{$employee->id}}" method="post">
+                        <a href="{{ route('update_id',['id'=>$employee->id]) }}" class="btn btn-warning">Modify</a>
+                        <form class="form" action="{{ route('delete_id',['id'=>$employee->id]) }}" method="post">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="id" value="{{$employee->id}}">
                             <button type="Delete" class="btn btn-danger">Delete</button>

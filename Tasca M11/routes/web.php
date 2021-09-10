@@ -22,16 +22,16 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/home', HomeController::class);
+Route::get('/home', HomeController::class)->name('home');
 
-Route::get('/list', ListController::class);
-Route::get('/list/{id}', ListController::class);
-Route::get('/show/{id}', ShowController::class);
+Route::get('/list', ListController::class)->name('list');
+Route::get('/list/{id}', ListController::class)->name('list_id');
+Route::get('/show/{id}', ShowController::class)->name('show_id');
 
-Route::post('/create', CreateController::class);
-Route::get('/showcreate', ShowCreateController::class);
+Route::post('/create', CreateController::class)->name('create');
+Route::get('/showcreate', ShowCreateController::class)->name('show-create');
 
-Route::get('/update/{id}', UpdateController::class);
-Route::post('/store', StoreController::class);
-Route::post('/delete/{id}',DeleteController::class);
+Route::get('/update/{id}', UpdateController::class)->name('update_id');
+Route::post('/store', StoreController::class)->name('store');
+Route::post('/delete/{id}',DeleteController::class)->name('delete_id');
 

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form class="form" action="/tasca-m11/public/showcreate" method="get">
+    <form class="form" action="{{ route('show-create') }}" method="get">
 
         <div class="d-flex flex-row">
             <div class="p-3">
@@ -69,19 +69,19 @@
         @foreach ($employees ?? '' as $employee)
             <tr>
                 <th scope="row">
-                    <a href="/tasca-m11/public/show/{{$employee->id}}" class="btn btn-primary">Show</a>
+                    <a href="{{ route('show_id',['id'=>$employee->id]) }}" class="btn btn-primary">Show</a>
                 </th>
                 <td>{{$employee->first}}</td>
                 <td>{{$employee->last}}</td>
                 <td>{{$employee->incorporation_date}}</td>
                 <td>{{$employee->department}}</td>
                 <td>
-                    <form class="form" action="/tasca-m11/public/delete/{{$employee->id}}" method="post">
+                    <form class="form" action="{{ route('delete_id',['id'=>$employee->id]) }}" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="id" value="{{$employee->id}}">
                         <button type="Delete" class="btn btn-danger">Delete</button>
                     </form>
-                    <a href="/tasca-m11/public/update/{{$employee->id}}" class="btn btn-warning">Modify</a>
+                    <a href="{{ route('update_id',['id'=>$employee->id]) }}" class="btn btn-warning">Modify</a>
                 </td>
             </tr>
         @endforeach
