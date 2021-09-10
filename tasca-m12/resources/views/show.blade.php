@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container my-5">
-        <a href="/tasca-m12/public/home" class="btn btn-secondary">Go back to home page</a>
+        <a href="{{ route('home') }}" class="btn btn-secondary">Go back to home page</a>
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
                 <h1 class="display-4 fw-bold lh-1">{{ $team->name ?? ''}}</h1>
@@ -20,7 +20,7 @@
                     <br>
                     <td>
                         <!-- Buttons -->
-                        <a href="/tasca-m12/public/update/{{ $team->id ?? ''}}" class="btn btn-warning">Modify</a>
+                        <a href="{{ route('update_id',['id'=>$team->id]) }}" class="btn btn-warning">Modify</a>
                         <br>
                         <form class="form" action="/tasca-m12/public/delete/{{ $team->id ?? ''}}" method="post">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -4,7 +4,7 @@
 @section('content')
     <div class="container my-5">
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-            <a href="/tasca-m12/public/home" class="btn btn-secondary">Go back to teams home page</a>
+            <a href="{{ route('home') }}" class="btn btn-secondary">Go back to teams home page</a>
             <form class="form" action="/tasca-m12/public/create" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="id" value="{{$team->id ?? ''}}">

@@ -38,25 +38,25 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-//Route::group(['middleware'=>'auth'], function() {
+Route::group(['middleware'=>'auth'], function() {
+
 //Teams  routes CRUD
 
-Route::get('/home', HomeController::class);
-Route::get('/show/{id}', ShowController::class);
-Route::post('/create', CreateController::class);
-Route::get('/show-create', ShowCreateController::class);
-Route::get('/update/{id}', UpdateController::class);
-Route::post('/store', StoreController::class);
-Route::post('/delete/{id}', DeleteController::class);
+Route::get('/home', HomeController::class) ->name('home');
+Route::get('/show/{id}', ShowController::class)  ->name('show_id');
+Route::post('/create', CreateController::class)  ->name('create');
+Route::get('/show-create', ShowCreateController::class)  ->name('show-create');
+Route::get('/update/{id}', UpdateController::class)  ->name('update_id');
+Route::post('/store', StoreController::class)  ->name('store');
+Route::post('/delete/{id}', DeleteController::class)  ->name('delete_id');
 
 //Matches routes CRUD
 
-Route::get('/home-matches', HomeMatchesController::class);
-Route::post('/create-match', CreateMatchController::class);
-Route::get('/show-match/{id}', ShowMatchController::class);
-Route::get('/show-create-match', ShowCreateMatchController::class);
-Route::get('/update-match/{id}', UpdateMatchController::class);
-Route::post('/store-match', StoreMatchController::class);
-Route::post('/delete-match/{id}', DeleteMatchController::class);
-//});
+Route::post('/create-match', CreateMatchController::class)  ->name('create-match');
+Route::get('/show-match/{id}', ShowMatchController::class)  ->name('show-match_id');
+Route::get('/show-create-match', ShowCreateMatchController::class)  ->name('show-create-match');
+Route::get('/update-match/{id}', UpdateMatchController::class)  ->name('update-match_id');
+Route::post('/store-match', StoreMatchController::class)  ->name('store-match');
+Route::post('/delete-match/{id}', DeleteMatchController::class)  ->name('delete-match_id');
+});
 
