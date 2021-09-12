@@ -14,12 +14,12 @@ and open the template in the editor.
             // Tasks list
             $products = $product->list();
         ?>
-        
+        <!--
         <div class="container p-4">
             <div class="row">
                 <div class="col-md-4" >
                     <h2>New prodcut</h2>
-                    <!-- formulario -->
+
                     <form method="POST" action="request/createRequest.php">
                         <div class="form-group">
                           <label for="description">Product name</label>
@@ -39,8 +39,10 @@ and open the template in the editor.
                           <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
                 </div>
+                -->
                 <div class="col-md-8">
                     <h2>Purchase</h2>
+                    <a class="btn btn-secondary" href="create.php">Add product <i class="fas fa-pen-alt"></i></a>
                     <table class="table">
                        <thead>
                          <tr>
