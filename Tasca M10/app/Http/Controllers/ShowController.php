@@ -1,9 +1,8 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-class ShowEditBookController extends Controller
+class ShowController extends Controller
 {
     public function __invoke(string $id = null)
     {
@@ -14,7 +13,7 @@ class ShowEditBookController extends Controller
             'abstract' => 'This is the Pitagoras life book.',
         ];
 
-        return view('catalog.edit', [
+        return view('catalog.show', [
             'book' => $book,
         ]);
     }

@@ -14,5 +14,6 @@ class StoreBookController extends Controller
             'publication_date' => 'required | date',
             'abstract' => 'required | max:255',
         ]);
+        echo 'Book Saved';
     }
 }

@@ -17,7 +17,7 @@ class ShowDateMiddleware
     public function handle(Request $request, Closure $next)
     {
         //Return date
-        echo date('Y-m-d') . '<br>';
+        echo 'Today is: ' . date('Y-m-d') . '<br>';
         return $next($request);
     }
 }

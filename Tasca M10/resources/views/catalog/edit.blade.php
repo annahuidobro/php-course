@@ -1,6 +1,12 @@
-This is the {{  $book['name'] }} edit  page with blade
 <!DOCTYPE html>
 <html lang="en">
+@extends('base')
+
+@section('header')
+    @include('stacks.header')
+@endsection
+
+@section('content')
 <head>
     <meta charset="UTF-8">
     <title>Edit Book Tab</title>
@@ -32,7 +38,7 @@ This is the {{  $book['name'] }} edit  page with blade
         </ul>
     </div>
 @endif
-<form action="/tasca-m10/public/catalog/update" method="post">
+<form action="{{ route('update') }}" method="post">
     <label for="name">Name:</label>
     <input type="text" value="{{$book['name']}}" name="name" />
     <br/>
@@ -44,7 +50,9 @@ This is the {{  $book['name'] }} edit  page with blade
     <label for="abstract">Abstract:</label>
     <input type="text" value="{{$book['abstract']}}" name="abstract" />
     <br/>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 </form>
+<a href="{{ route('catalog') }}" class="btn btn-primary">Go back</a>
 </body>
 </html>
+@endsection

@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     //
-    public function __invoke($name = null)
+    public function __invoke(Request $request)
     {
-    // TODO: Implement __invoke($name) method.
-        return "Please $name access your credentials to Login";
-}
+        return view('login');
+    }
 }

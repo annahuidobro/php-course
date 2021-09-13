@@ -15,8 +15,7 @@ class UpdateBookController extends Controller
             'abstract' => $request->get('abstract'),
         ];
 
-        return view('catalog.edit', [
-            'book' => $book,
-        ]);
+        return redirect()->route('catalog');
+
     }
 }
