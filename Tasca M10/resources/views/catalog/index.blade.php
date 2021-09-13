@@ -7,3 +7,4 @@
 <a href="{{ route('edit') }}" class="btn btn-primary">Update book</a>
 <br>
 <a href="{{ route('delete',['id'=>1]) }}" class="btn btn-primary">Delete book</a>
+

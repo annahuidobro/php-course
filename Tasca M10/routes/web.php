@@ -54,6 +54,7 @@ Route::get('/', function () {
 })->name('home');
 
 
+
 //Login route with blade
 /*
 Route::get('/login', function (){
@@ -61,6 +62,7 @@ Route::get('/login', function (){
 })->name('login');*/
 Route::get('/login', LoginController::class)->name('login');
 Route::post('/do-login', DoLoginController::class)->name('dologin');
+
 
 //Catalog routes with blade
 Route::get('/catalog', function(){
@@ -96,4 +98,22 @@ Route::patch('/catalog/edit/{id}', function($id){
 //Form rute (exercise 2)
 //Route::match(['get','post'],'input',TestRequestController::class);
 
+// Cookie test
+Route::get('CookieTest',LoginController::class);
 
+//Login route with blade (excercise 2)
+/*
+Route::get('/login', function (){
+    return view('login');
+});
+*/
+//Logout route with blade (excercise 6)
+Route::get('login',LoginController::class);
+
+//Register route with blade (excercise 6)
+Route::get('register', RegisterController::class);
+Route::post('register', RegisterController::class);
+
+//Password recovery route with blade (excercise 6)
+Route::get('passrecovery', PassrecoveryController::class);
+Route::post('passrecovery', PassrecoveryController::class);

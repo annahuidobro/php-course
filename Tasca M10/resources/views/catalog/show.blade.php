@@ -20,3 +20,4 @@ This is the show view of {{ $book['name'] }} with blade
         <br/>
     </div>
 @endsection
+

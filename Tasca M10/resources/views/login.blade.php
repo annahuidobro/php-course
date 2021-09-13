@@ -1,4 +1,5 @@
-@extends('base')
+
+extends('base')
 
 @section('header')
     @include('stacks.header')

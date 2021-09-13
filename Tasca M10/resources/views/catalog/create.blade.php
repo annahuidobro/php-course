@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-<body>
+<body><x-nav-bar></x-nav-bar>
 <h1>Creation of a Book tab</h1>
 @if(count($errors) > 0)
     <div class="errors">
