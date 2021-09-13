@@ -23,23 +23,13 @@
 
         label {
             display: inline-block;
-            width: 120px:
+            width: 120px;
         }
     </style>
 </head>
 <body>
 <h1>Edition of a Book tab</h1>
-<x-nav-bar></x-nav-bar>
-@if(count($errors) > 0)
-    <div class="errors">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-<form action="{{ route('update') }}" method="post">
+<div>
     <label for="name">Name:</label>
     <input type="text" value="{{$book['name']}}" name="name" />
     <br/>
@@ -51,8 +41,9 @@
     <label for="abstract">Abstract:</label>
     <input type="text" value="{{$book['abstract']}}" name="abstract" />
     <br/>
-    <button type="submit" class="btn btn-primary">Update</button>
-</form>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
 <a href="{{ route('catalog') }}" class="btn btn-primary">Go back</a>
 </body>
 </html>

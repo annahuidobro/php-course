@@ -5,13 +5,12 @@
 // use App\Http\Controllers\LoginController;
 // use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DeleteBookController;
+use App\Http\Controllers\DoLoginController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PassrecoveryController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ShowController;
 use App\Http\Controllers\ShowCreateBookController;
 use App\Http\Controllers\ShowEditBookController;
 use App\Http\Controllers\StoreBookController;
-use App\Http\Controllers\TestRequestController;
 use App\Http\Controllers\AddBookController;
 
 use App\Http\Controllers\UpdateBookController;
@@ -26,81 +25,66 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-/*
-Route::get('/', function () {
-    return view('Welcome to tasca M10');
-});
-*/
-// new route for Paginas directory
-/*Route::get('paginas', function () {
-    return view('paginas/index');
-});
 
-// new route for vista1 view
-Route::get('Paginas', function () {
-    return view(Paginas / vista1());
-});
-*/
-/*
+
 //EXERCICE 1
 
 //Home Route
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 //Login route
-Route::get('/login/{name?}', LoginController::class);
+Route::get('/login/{name?}', LoginController::class)->name('login');
 //Logout route
-Route::get('/logout/{name?}', LogoutController::class);
+Route::get('/logout/{name?}', LogoutController::class)->name('logout');
 
 //Catalog routes
 Route::get('/catalog', [CatalogController::class,'list']);
-Route::get('/catalog/show/{id}', [CatalogController::class, 'show']);
+Route::get('/catalog/show/{id}', [CatalogController::class, 'show'])->name('show');
 
 //route test >> Route::get('/catalog/create', [CatalogController::class, 'create']);
-Route::post('/catalog/create', [CatalogController::class, 'create']);
+Route::post('/catalog/create', [CatalogController::class, 'create'])->name('create');
 
 //Route test >> Route::up('/catalog/edit/{id}', [CatalogController::class,'edit']);
-Route::patch('/catalog/edit/{id}', [CatalogController::class,'edit']);
+Route::patch('/catalog/edit/{id}', [CatalogController::class,'edit'])->name('edit');
 */
 //EXERCISE 2
 
 //Home Route with blade
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 
-//Login route with blade (excercise 2)
+
+//Login route with blade
 /*
 Route::get('/login', function (){
     return view('login');
-});
-*/
+})->name('login');*/
+Route::get('/login', LoginController::class)->name('login');
+Route::post('/do-login', DoLoginController::class)->name('dologin');
 
-//Login route with blade (excercise 6)
-Route::get('/login', LoginController::class);
-Route::post('/login', LoginController::class);
 
 //Catalog routes with blade
 Route::get('/catalog', function(){
-    return view('/catalog/index');
-});
+    return view('/catalog/index');})->name('catalog');
 
 //Show Book tab with blade
+/*
 Route::get('/catalog/show/{id}', function($id){
-    return view('/catalog/show', ['book' => $id]);
-});
+    return view('/catalog/show/{id?)');
+})->name('show');*/
+Route::get('/catalog/show/{id}', ShowController::class)->name('show');
 
 //Create view with blade
-Route::get('/catalog/create', ShowCreateBookController::class);
-Route::post('/catalog/store', StoreBookController::class);
+Route::get('/catalog/create', ShowCreateBookController::class)->name('create');
+Route::post('/catalog/store', StoreBookController::class)->name('store');
 
 //Edit/Update view with blade
-Route::get('/catalog/edit/{id?}', ShowEditBookController::class);
-Route::post('/catalog/update', UpdateBookController::class);
+Route::get('/catalog/edit/{id?}', ShowEditBookController::class)->name('edit');
+Route::post('/catalog/update', UpdateBookController::class)->name('update');;
 
 //Delate view with blade
-Route::get('/catalog/delete/{id?}', DeleteBookController::class);
+Route::get('/catalog/delete/{id?}', DeleteBookController::class)->name('delete');
 
 
 
@@ -108,7 +92,7 @@ Route::get('/catalog/delete/{id?}', DeleteBookController::class);
 /*
 Route::patch('/catalog/edit/{id}', function($id){
     return view('/catalog/edit', ['book'=> $id]);
-});
+})->name('update');
 */
 
 //Form rute (exercise 2)

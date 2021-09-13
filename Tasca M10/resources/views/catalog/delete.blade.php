@@ -1,19 +1,11 @@
-This is the {{  $book['name'] }} edit  page with blade
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete Book Tab</title>
-    <style>
-        .errors {
-            background-color: #fcc;
-            border: 1px solid #966;
-        }
 
-        form {
-            margin-top: 20px;
-            line-height: 1.5em;
-        }
+@extends('base')
+
+@section('header')
+    @include('stacks.header')
+@endsection
+@section('content')
+
 
         label {
             display: inline-block;
@@ -34,9 +26,11 @@ This is the {{  $book['name'] }} edit  page with blade
     </div>
 @endif
 
+
 <div>
-    <h2>The Book tag {{ $book['name']}} has been deleted!</h2>
-    <a href="http://localhost/tasca-m10/public/catalog">Go back</a>
+    <h3>The Book tag {{ $book['name']}} has been deleted!</h3>
+    <a href="{{ route('catalog') }}" class="btn btn-primary">Go back</a>
 </div>
-</body>
-</html>
+
+
+@endsection

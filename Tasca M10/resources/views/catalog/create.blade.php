@@ -1,4 +1,3 @@
-This is the creation book tag view with blade
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,7 @@ This is the creation book tag view with blade
         </ul>
     </div>
 @endif
-<form action="/tasca-m10/public/catalog/store" method="post">
+<form action="{{ route('store') }}" method="post">
     <label for="name">Name:</label>
     <input type="text" value="{{old('name')}}" name="name" />
     <br/>
@@ -46,5 +45,6 @@ This is the creation book tag view with blade
     <br/>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<a href="{{ route('catalog') }}" class="btn btn-primary">Go back</a>
 </body>
 </html>
