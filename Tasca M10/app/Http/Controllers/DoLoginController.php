@@ -12,7 +12,7 @@ class DoLoginController extends Controller
             'user' => 'required | max:50',
             'pasword' => 'required',
         ]);
-        echo '$request you logged in successfully!';
+        echo $request->get('user') . ' you logged in successfully!';
         exit;
     }
 }
