@@ -39,12 +39,12 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="cc-exp" class="control-label mb-1">CheckIn Date</label>
-                            <input id="cc-exp" name="checkin_date" type="date" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid day, month and year" placeholder="DD / MM / YY" autocomplete="cc-exp">
+                            <input id="cc-exp" name="checkin_date" type="date" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the chekIn date" data-val-cc-exp="Please enter a valid day, month and year" placeholder="DD / MM / YY" autocomplete="cc-exp">
                             <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
                         </div>
                         <div class="form-group">
                             <label for="cc-exp" class="control-label mb-1">CheckOut Date</label>
-                            <input id="cc-exp" name="checkout_date" type="date" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid day, month and year" placeholder="DD / MM / YY" autocomplete="cc-exp">
+                            <input id="cc-exp" name="checkout_date" type="date" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the checkOut date" data-val-cc-exp="Please enter a valid day, month and year" placeholder="DD / MM / YY" autocomplete="cc-exp">
                             <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
                         </div>
                     </div>
