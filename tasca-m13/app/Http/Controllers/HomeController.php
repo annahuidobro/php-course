@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function __invoke()
     {
         $now = Carbon::now();
-        $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');
+        $weekStartDate = $now->startOfWeek()->format('Y-m-d');
 
         $bookings = Booking::all();
 
@@ -21,7 +21,7 @@ class HomeController extends Controller
         foreach ($bookings as $booking) {
             $totalGuest += $booking->guests;
             $totalBookings++;
-            if ($booking->checking_in >= $weekStartDate) {
+            if ($booking->checkin_date >= $weekStartDate) {
                 $totalBookingsThisWeek++;
             }
             $totalPrice += $booking->price;
