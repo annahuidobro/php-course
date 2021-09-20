@@ -13,8 +13,8 @@ class StoreController extends Controller
             'checkin_date' => 'required',
             'checkout_date' => 'required',
             'room_id' => 'min: 1| max: 50',
-            'guests' => 'min: 1| max: 15',
-            'price' => 'min: 0| max: 150'
+            'guests' => 'required|integer|min:1|max:15',
+            'price' => 'required|integer|min:1|max:150'
         ]);
         $booking = Booking::where('id', $request->get('id'))->first();
 
