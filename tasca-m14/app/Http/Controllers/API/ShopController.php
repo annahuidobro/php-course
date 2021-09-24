@@ -9,14 +9,13 @@ use Illuminate\Http\Request;
 class ShopController extends Controller
 {
 
-    public function create(REquest $request)
+    public function create(Request $request)
     {
-        $shop = new Shop();
-
-        $shop->name = $request->get('name');
-        $shop->capacity = $request->get('capacity');
-        $shop->updated_at = date('Y-m-d');
-
+        $shop = Shop::create([
+        'name' => $request->get('name'),
+        'capacity' => $request->get('capacity'),
+        'updated_at' => date('Y-m-d'),
+        ]);
 
         $shop->save();
 
