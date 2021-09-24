@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Collar extends Model
+class Shop extends Model
 {
     use HasFactory;
+    public function shop()
+    {
+        return $this->hasOne(Shop::class, 'id', 'shop_id');
+    }
 }
