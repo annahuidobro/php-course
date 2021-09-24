@@ -10,7 +10,7 @@ class Picture extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'detail'
+        'name', 'author','price','shop_id'
     ];
     protected $guarded = [''];
 

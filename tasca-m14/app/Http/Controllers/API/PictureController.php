@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Picture;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class PictureController extends Controller
@@ -12,15 +11,14 @@ class PictureController extends Controller
 
     public function create(Request $request)
     {
-        $picture = new Picture();
-
-        $picture->name = $request->get('name');
-        $picture->author= $request->get('author');
-        $picture->price= $request->get('price');
-        $picture->updated_at = date('Y-m-d');
-        $picture->shop_id = $request->get('shop_id');
-
-        $picture->save();
+        //$picture = new Picture();
+        $picture = Picture::create([
+            'name' => $request->get('name'),
+            'author' => $request->get('author'),
+            'price' => $request->get('price'),
+            'updated_at' => date('Y-m-d'),
+            'shop_id' => $request->get('shop_id'),
+        ]);
 
         return response()->json([
             'success' => true, 'picture' => $picture], 200);
