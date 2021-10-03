@@ -2,59 +2,92 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    /**
+     * Registro de usuario
+     */
+    public function signUp(Request $request)
     {
-        $validator = Validator::make($request->only('email', 'password'), [
-            'email' => 'required|email',
-            'password' => 'required|min:8'
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string'
         ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'error' => $validator->errors(),
-            ], 422);
-        }
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
 
-        $token = JWTAuth::attempt($request->only('email', 'password'));
-
-        if ($token) {
-            return response()->json([
-                'success' => true,
-                'token' => $token,
-                'user' => Auth::user(),
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'error' => 'Unauthorized',
-            ], 401);
-        }
+        return response()->json([
+            'message' => 'Successfully created user!'
+        ], 201);
     }
 
-    public function logout()
+    /**
+     * Inicio de sesión y creación de token
+     */
+    public function login(Request $request)
     {
-        $token = JWTAuth::getToken();
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+            'remember_me' => 'boolean'
+        ]);
 
-        try {
-            JWTAuth::invalidate($token);
+        $credentials = request(['email', 'password']);
 
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            if (!Hash::check($request->password, $user->password)) {
+                return response()->json([
+                    'message' => 'Unauthorized'
+                ], 401);
+            }
+        } else {
             return response()->json([
-                'success' => true,
-            ], 200);
-        } catch (JWTException $exception) {
-            return response()->json([
-                'success' => false,
-                'error' => 'Failed logout',
-            ], 422);
+                'message' => 'Unauthorized'
+            ], 401);
         }
+
+        $tokenResult = $user->createToken('Personal Access Token');
+
+        $token = $tokenResult->token;
+        if ($request->remember_me)
+            $token->expires_at = Carbon::now()->addWeeks(1);
+        $token->save();
+
+        return response()->json([
+            'access_token' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString()
+        ]);
+    }
+
+    /**
+     * Cierre de sesión (anular el token)
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
+    }
+
+    /**
+     * Obtener el objeto User como json
+     */
+    public function user(Request $request)
+    {
+        return response()->json($request->user());
     }
 }

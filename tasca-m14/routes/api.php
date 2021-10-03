@@ -4,6 +4,7 @@ use App\Http\Controllers\API\PictureController;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\ShopController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PassportController;
 
 use App\Http\Controllers\API\DeleteController;
 use Illuminate\Http\Request;
@@ -20,22 +21,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::post('register', RegisterController::class);
+/*
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('login', [AuthController::class, 'login'])->name('login');
+    Route::post('signup', [AuthController::class, 'signUp']);
+
+    Route::group(['middleware' => 'auth:api'], function() {
+        Route::get('logout', [AuthController::class, 'logout']);
+        Route::get('user', [AuthController::class, 'user']);
+    });
+});
+*/
 /*
 Route::middleware('auth:api')->group(function () {
     Route::resource('pictures', PictureController::class);
 });
 */
-Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('register',[PassportController::class, 'register']);
+Route::post('login',[PassportController::class, 'login'])->name('login');
 
-Route::middleware('jwt.auth')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::middleware('auth:api')->group(function () {
+    //logout
+    Route::post('logout',[PassportController::class, 'logout'])->name('logout');
 
-    // Crear botiga: li direm el nom i la capacitat (POST /shops/).
+    // Crear botiga: li direm el nom i la capacitat (POST /shops/)
     Route::post('/shops', [ShopController::class, 'create'])->name('create-shop');
 
     // Llistar botigues: retorna la llista de botigues amb el seu nom i la capacitat (GET /shops/).
@@ -55,3 +65,4 @@ Route::middleware('jwt.auth')->group(function () {
 //Route::post('pictures',[ProductController::class,store])->name('pictures.store');
 //Route::delete('pictures',[ProductController::class,delete])->name('pictures.delete');
 });
+
