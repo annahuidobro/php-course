@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 */
 //JWT uthentication routes
-/*
+
 Route::group([
 
     'middleware' => 'api',
@@ -38,31 +38,27 @@ Route::group([
     Route::post('/me', [AuthController::class,'me']);
 
 });
-*/
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 //Route::post('/register', RegisterController::class);
-
+// Create a player
 Route::post('/players', [PlayersController::class, 'create'])->name('player-create');
+//Modify player name
 Route::put('/players/{id}', [PlayersController::class, 'update'])->name('player-update');
+//Player {Id} rolls dices
 Route::post('/players/{id}/games/', [GamesController::class, 'play'])->name('play');
+//eliminates player rolls
 Route::delete('/players/{id}/games', [GamesController::class, 'delete'])->name('delete');
-
-//retorna el llistat de tots els jugadors del sistema amb el seu percentatge mig d’èxits
+//returns the list of all players in the system with their average success rate
 Route::get('/players/', [PlayersController::class, 'list_players'])->name('list_players');
-
-//retorna el llistat de jugades per un jugador
+//returns the list of plays by a player
 Route::get('/players/{id}/games/', [PlayersController::class, 'list_games'])->name('list_games');
-
-
-//GET /players/ranking: retorna el ranking mig de tots els jugadors del sistema. És a dir, el percentatge mig d’èxits.
+//returns the average ranking of all players in the system. That is, the average success rate.
 Route::get('/players/ranking', [RankingController::class, 'ranking'])->name('ranking');
-
-
-// GET /players/ranking/loser: retorna el jugador amb pitjor percentatge d’èxit
+//Returns the player with the worst success rate
 Route::get('/players/ranking/loser', [RankingController::class, 'loser'])->name('loser');
-
-//GET /players/ranking/winner: retorna el jugador amb pitjor percentatge d’èxit.
+//returns the player with the best success rate.
 Route::get('/players/ranking/winner', [RankingController::class, 'winner'])->name('winner');

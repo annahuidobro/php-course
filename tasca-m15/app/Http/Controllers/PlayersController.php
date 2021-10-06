@@ -29,15 +29,12 @@ class PlayersController extends Controller
 
         if ($user !== null) {
             $user->name = $request->get('name');
-            $user->email = $request->get('email');
-            $user->password = $request->get('password');
-            $user->updated_at = date('Y-m-d');
         }
 
         $user->save();
 
         return response()->json([
-            'success' => true, 'user' => $user], 200);
+            'success' => true, 'user new name' => $user->name], 200);
 
     }
 
