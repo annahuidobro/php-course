@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class PlayersController extends Controller
 {
@@ -20,7 +21,7 @@ class PlayersController extends Controller
         ]);
 
         return response()->json([
-            'success' => true, 'user' => $user], 200);
+            'success' => true, 'user' => $user, ], 200);
     }
 
     public function update(Request $request)
@@ -34,8 +35,7 @@ class PlayersController extends Controller
         $user->save();
 
         return response()->json([
-            'success' => true, 'user new name' => $user->name], 200);
-
+            'success' => true, 'user new name' => $user->name, ], 200);
     }
 
     public function list_players()
@@ -48,28 +48,39 @@ class PlayersController extends Controller
             $games = Game::where('user_id', $user->id)->get();
             $sumSuccess = 0;
             $userTotalPlays = 0;
+            $lastGame = Carbon::createFromTimestamp(0);
+
             foreach ($games as $game) {
                 if ($game->success === 1) {
-                    $sumSuccess++;
+                    ++$sumSuccess;
                 }
-                $userTotalPlays++;
+                ++$userTotalPlays;
+
+                if ($game->created_at->gt($lastGame)) {
+                    $lastGame = $game->created_at;
+                }
             }
 
             if ($userTotalPlays !== 0) {
-                $userSuccessfulGames[$user->id] = ($sumSuccess / $userTotalPlays)*100;
+                $ranking = $sumSuccess / $userTotalPlays * 100;
             } else {
-                $userSuccessfulGames[$user->id] = 0;
+                $ranking = 0;
             }
 
+            $userSuccessfulGames[$user->id] = [
+                'id' => $user->id,
+                'name' => $user->name,
+                'ranking' => $ranking,
+                'last_game' => $lastGame->format('M d Y'),
+            ];
         }
 
         return response()->json(
             [
-                'success' => true, '% sucess' => $userSuccessfulGames
+                'success' => true, 'users' => $userSuccessfulGames,
             ],
             200
         );
-
     }
 
     public function list_games(string $id)
@@ -79,12 +90,13 @@ class PlayersController extends Controller
         $user_resoults = [];
         foreach ($games as $game) {
             $user_resoults[$i] = $game->dice1 + $game->dice2;
-            $i++;
+            ++$i;
         }
+
         return response()->json([
             'success' => true,
             'user' => $id,
-            'results' => $user_resoults
+            'results' => $user_resoults,
         ]);
     }
 }

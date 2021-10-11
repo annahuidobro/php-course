@@ -9,6 +9,9 @@
             </div>
         </div>
     </div>
+    <router-views>
+        
+    </router-views>
 </template>
 
 <script>
@@ -35,7 +38,7 @@
                         name: 'User 2',
                         ranking: 1000,
                         lastgame: '2021-10-09'
-                    } 
+                    }
                 ]
             }
         },
