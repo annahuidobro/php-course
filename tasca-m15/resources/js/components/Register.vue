@@ -1,8 +1,7 @@
 <template>
   <div class="register">
-    <h1 class="title">Register</h1>
     <form action class="form" @submit.prevent="register">
-      <label class="form-label" for="#email">Email:</label>
+      <label class="form-label first" for="#email">Email:</label>
       <input
         v-model="email"
         class="form-input"
@@ -10,6 +9,15 @@
         id="email"
         required
         placeholder="Email"
+      >
+      <label class="form-label" for="#email">Name:</label>
+      <input
+        v-model="name"
+        class="form-input"
+        type="text"
+        id="name"
+        required
+        placeholder="Name"
       >
       <label class="form-label" for="#password">Password:</label>
       <input
@@ -19,7 +27,7 @@
         id="password"
         placeholder="Password"
       >
-      <label class="form-label" for="#password-repeat">Repit password:</label>
+      <label class="form-label" for="#password-repeat">Repeat password:</label>
       <input
         v-model="passwordRepeat"
         class="form-input"
@@ -37,6 +45,7 @@
 export default {
   data: () => ({
     email: "",
+    name: "",
     password: "",
     passwordRepeat: "",
     error: false
@@ -54,13 +63,7 @@ export default {
 };
 </script>
 
-<style scoped>
-.register {
-  padding: 2rem;
-}
-.title {
-  text-align: center;
-}
+<style>
 .form {
   margin: 3rem auto;
   display: flex;
@@ -75,13 +78,13 @@ export default {
   box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
 }
 .form-label {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   color: white;
   margin-bottom: 0.5rem;
-  &:first-of-type {
-    margin-top: 0rem;
-  }
 }
+.first {
+    margin-top: 0;
+  }
 .form-input {
   padding: 10px 15px;
   background: none;
@@ -101,9 +104,9 @@ export default {
   padding: 1rem 0;
   cursor: pointer;
   transition: background 0.2s;
-  &:hover {
-    background: #0b9185;
-  }
+}
+.form-submit:hover {
+  background: #0b9185;
 }
 .error {
   margin: 1rem 0 0;

@@ -1,58 +1,60 @@
 <template>
     <div class="container mt-3 mb-3 content">
-        <p v-if="!user">Hi, Sign-in or Register if you want to play :)</p>
-        <div v-else class="col-12">
-            <p>Welcome back <strong>{{user.name}}</strong></p>
-        
-            <button @click="play(user.id)" type="button" calss="btn btn-sm btn-outline-secondary">PLAY</button>
-            <button @click="delete_games(user.id)" type="button" calss="btn btn-sm btn-outline-secondary">Delete user games</button>
-            <form v-on:submit.prevent="editUser()">
-            <div class="form-group">
-                <label for="name">Change user name:</label>
-                <input type="text" class="form-control" id="name" v-model="user.name">
+        <div class="row">
+            <div class="col-6">
+                <p class="welcome">Welcome back <strong>{{ username }}</strong></p>
+
+                <button @click="play(userid)" type="button" class="btn play btn-sm btn-outline-secondary">PLAY</button>
             </div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
-            </form>
+            <div class="col-6">
+                <h3>Setup profile</h3>  
+                <button @click="delete_games(userid)" type="button" class="btn btn-sm btn-outline-secondary">Delete user games</button>
+
+                <form v-on:submit.prevent="editUser()">
+                    <div class="form-group">
+                        <label for="name">Change user name:</label>
+                        <input type="text" class="form-control" id="name" v-model="username">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Submit</button>
+                </form>
+            </div>
         </div>
     </div>    
 </template>
 
 <script>
-let defaultUser = {
-                name: '',
-                id: '',  
-                email: ' ',
-                password: ' ',  
-            };
 export default {
-    name: "playerPage",
-        props: {
-        edit: {
-            default: false
-        },
-        idUser: {
-            required: false
-        }
-    },
     data() {
         return {
-            user: 
-                {
-                    id: '1',
-                    name: 'User 1',
-                    ranking: 0,
-                    lastgame: '2021-12-01',
-                    email: 'user1@gmail.com',
-                    password: 'password'
-                }
-                
+                username: '',
+                userid: '',
         };
+    },
+    beforeMount() {
+        //Token
+        if (localStorage.getItem('token')) {
+            this.isAuthenticated = true;
+        } else {
+            this.isAuthenticated = false;
+            this.$router.push({name: 'login'});
+        }
+
+        //Username
+        if (localStorage.getItem('username')) {
+            this.username = localStorage.getItem('username');
+            this.userid = localStorage.getItem('userid');
+        } else {
+            this.username = '';
+        }
     },
     methods: {
         play(user_id) {
-            /*alert(user_id);*/
-            const url = `api/players/${user_id}/games`;
-            axios.post(url);
+            let currentUrl = window.location.href;
+            let url =  `${currentUrl}api/players/${user_id}/games`;
+
+            axios.post(url).then(() => {
+                this.$router.push({name: 'home'})
+            });
         },
         delete_games(user_id) {
             /*alert(user_id);*/
@@ -73,9 +75,24 @@ export default {
 
 <style>
     .content {
-        background-color: #e9e9e9;
         padding: 15px;
-        border: 1px solid #c5c5c5;
-        border-radius: 15px;
+    }
+    .welcome {
+        text-align: center;
+    }
+    .play {
+        cursor: pointer;
+        background: #1a34b1;
+        border: none;
+        color: white;
+        margin-top: 0;
+        padding: 2rem 7rem;
+        transition: background 0.2s;
+        font-size: 30px;
+        margin: 0 auto;
+        display: block;
+    }
+    .btn:hover {
+        background-color: #3f5df0;
     }
 </style>

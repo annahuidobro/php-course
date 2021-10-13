@@ -1,21 +1,35 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Home from "./components/HomeComponent";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import PlayComponent from "./components/PlayComponent"
+import { createRouter, createWebHistory } from "vue-router";
 
-import App from "./App";
-import Home from "./views/Home";
-import Login from "./views/Login";
-import Register from "./views/Register";
-import PlayComponent from "./compopnents/Play"
+const routeInfos = [
+  {
+      path: '/',
+      name: 'home',
+      component: Home
+  },
+  {
+      path: '/login',
+      name: 'login',
+      component: Login
+  },
+  {
+      path: '/register',
+      name: 'register',
+      component: Register
+  },
+  {
+      path: '/play',
+      name: 'play',
+      component: PlayComponent
+  }
+]
 
-Vue.use(Router);
+const router = createRouter({
+  history: createWebHistory(),
+  routes: routeInfos
+})
 
-const routes = [
-  { path: "/", component: Home },
-  { path: "/login", component: Login },
-  { path: "/register", component: Register },
-  { path: "/play", component: Play}
-];
-
-const router = new Router({
-  routes
-});
+export default router;
