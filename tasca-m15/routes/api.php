@@ -1,12 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RankingController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -26,23 +25,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //JWT uthentication routes
 
 Route::group([
-
     'middleware' => 'api',
-    'prefix' => 'auth'
-
+    'prefix' => 'auth',
 ], function ($router) {
-
-    Route::post('login', [AuthController::class,'login']);
-    Route::post('/logout', [AuthController::class,'logout']);
-    Route::post('/refresh', [AuthController::class,'refresh']);
-    Route::post('/me', [AuthController::class,'me']);
-
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
+Route::post('login', [AuthController::class, 'login']);
+/*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+*/
 //Route::post('/register', RegisterController::class);
 // Create a player
 Route::post('/players', [PlayersController::class, 'create'])->name('player-create');

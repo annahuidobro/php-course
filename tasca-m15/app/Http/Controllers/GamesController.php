@@ -11,13 +11,13 @@ class GamesController extends Controller
 
     public function play(Request $request, string $id)
     {
-        $dice1=random_int(1, 12);
-        $dice2=random_int(1, 12);
+        $dice1 = random_int(1, 6);
+        $dice2 = random_int(1, 6);
         $game = Game::create([
             'user_id' => $id,
             'dice1' => $dice1,
             'dice2' => $dice2,
-            'success'=> $dice1+$dice2 == self::SUCCESSFUL_RESULT,
+            'success' => $dice1 + $dice2 == self::SUCCESSFUL_RESULT,
             'updated_at' => date('Y-m-d'),
         ]);
 
@@ -30,7 +30,7 @@ class GamesController extends Controller
         return response()->json(
             [
                 'success' => $success,
-                'game' => $game
+                'game' => $game,
             ],
             200);
     }
@@ -42,11 +42,8 @@ class GamesController extends Controller
         foreach ($games as $game) {
             $game->delete();
         }
+
         return response()->json([
-            'success' => true, 200]);
+            'success' => true, 200, ]);
     }
-
-
 }
-
-

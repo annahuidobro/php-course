@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -37,11 +36,10 @@ return [
 
     'guards' => [
         'api' => [
-          //  'driver' => 'jwt',
-            'driver'=>'passport',
+          'driver' => 'jwt',
+           // 'driver'=>'passport',
             'provider' => 'users',
         ],
-
     ],
 
     /*
@@ -109,5 +107,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];

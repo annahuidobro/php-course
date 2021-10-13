@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <h1 class="title">Sign Up</h1>
+    <h1 class="title">Register</h1>
     <form action class="form" @submit.prevent="register">
       <label class="form-label" for="#email">Email:</label>
       <input
@@ -19,7 +19,7 @@
         id="password"
         placeholder="Password"
       >
-      <label class="form-label" for="#password-repeat">Repite la contraeña:</label>
+      <label class="form-label" for="#password-repeat">Repit password:</label>
       <input
         v-model="passwordRepeat"
         class="form-input"
@@ -27,13 +27,13 @@
         id="password-repeat"
         placeholder="Password"
       >
-      <input class="form-submit" type="submit" value="Sign Up">
+      <input class="form-submit" type="submit" value="Register">
     </form>
   </div>
 </template>
 
 <script>
-import auth from "@/logic/auth";
+
 export default {
   data: () => ({
     email: "",
@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .register {
   padding: 2rem;
 }

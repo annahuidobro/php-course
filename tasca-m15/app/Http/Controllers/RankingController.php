@@ -14,18 +14,18 @@ class RankingController extends Controller
         $userTotalPlays = 0;
         $totalsuccessfulgames = 0;
         foreach ($games as $game) {
-            $userTotalPlays++;
+            ++$userTotalPlays;
             if ($game->success === 1) {
-                $sumSuccess++;
+                ++$sumSuccess;
             }
-
         }
         if ($userTotalPlays !== 0) {
             $totalsuccessfulgames = ($sumSuccess / $userTotalPlays) * 100;
         }
+
         return response()->json(
             [
-                'success' => true, '% total games sucess' => round($totalsuccessfulgames, 2), 'sumSuccess' => $sumSuccess, 'TotalPlays' => $userTotalPlays
+                'success' => true, '% total games sucess' => round($totalsuccessfulgames, 2), 'sumSuccess' => $sumSuccess, 'TotalPlays' => $userTotalPlays,
             ],
             200
         );
@@ -43,9 +43,9 @@ class RankingController extends Controller
             $userTotalPlays = 0;
             foreach ($games as $game) {
                 if ($game->success === 1) {
-                    $sumSuccess++;
+                    ++$sumSuccess;
                 }
-                $userTotalPlays++;
+                ++$userTotalPlays;
             }
             if ($userTotalPlays !== 0) {
                 $userSuccessfulGames[$user->id] = ($sumSuccess / $userTotalPlays) * 100;
@@ -55,18 +55,17 @@ class RankingController extends Controller
         }
 
         $miniumResult = 101;
-        $player = null;
+        $loser = null;
         foreach ($userSuccessfulGames as $user => $result) {
             if ($result < $miniumResult) {
                 $miniumResult = $result;
-                $player = $user;
+                $loser = $user;
             }
         }
 
-
         return response()->json(
             [
-                'success' => true, 'loser player id' => $player, '%succesful of loser' => $miniumResult
+                'success' => true, 'loser player_id' => $loser, '%succesful of loser' => $miniumResult,
             ],
             200
         );
@@ -84,16 +83,15 @@ class RankingController extends Controller
             $userTotalPlays = 0;
             foreach ($games as $game) {
                 if ($game->success === 1) {
-                    $sumSuccess++;
+                    ++$sumSuccess;
                 }
-                $userTotalPlays++;
+                ++$userTotalPlays;
             }
             if ($userTotalPlays !== 0) {
                 $userSuccessfulGames[$user->id] = ($sumSuccess / $userTotalPlays) * 100;
             } else {
                 $userSuccessfulGames[$user->id] = 0;
             }
-
         }
         $maximResult = 0;
         $player = null;
@@ -104,10 +102,9 @@ class RankingController extends Controller
             }
         }
 
-
         return response()->json(
             [
-                'success' => true, 'winner player id is' => $player, '% successful of the winner' => $maximResult
+                'success' => true, 'winner player id is' => $player, '% successful of the winner' => $maximResult,
             ],
             200
         );

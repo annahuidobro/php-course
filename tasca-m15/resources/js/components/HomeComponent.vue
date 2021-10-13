@@ -1,28 +1,22 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="offset-md-3 col-md-6">
-                <header-component></header-component>
-                <main-component></main-component>
-                <h3>Players</h3>
-                <table-component></table-component>
-            </div>
-        </div>
-    </div>
-    <router-views>
-        
-    </router-views>
+    <header-component></header-component>
+    <player-component></player-component>
+    <table-component></table-component>
+    <router-views></router-views>
 </template>
 
 <script>
     import HeaderComponent from  './HeaderComponent'
-    import MainComponent from './MainComponent'
+    import PlayerComponent from './PlayerComponent'
     import TableComponent from './TableComponent'
+    import Register from './Register'
+
     export default {
         components: {
             HeaderComponent,
-            MainComponent,
+            PlayerComponent,
             TableComponent,
+            Register
         },
         data() {       
             return {

@@ -70,6 +70,7 @@ class PlayersController extends Controller
             $userSuccessfulGames[$user->id] = [
                 'id' => $user->id,
                 'name' => $user->name,
+                'tries' => $userTotalPlays,
                 'ranking' => $ranking,
                 'last_game' => $lastGame->format('M d Y'),
             ];
