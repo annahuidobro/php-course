@@ -5,7 +5,7 @@
         <header class="mb-auto">
           <h1 class="float-md-start mb-0">Dices Game</h1>
           <nav v-if="isAuthenticated" class="nav nav-masthead justify-content-center float-md-end">
-            <li class=nav-link>  
+            <li class=nav-link v-if="isAuthenticated">  
               <button class="btn btn-sm" v-on:click="logout">Logout</button>
             </li>   
           </nav>
@@ -27,9 +27,11 @@ export default {
         }
     },
     beforeMount() {
-        if (localStorage.getItem('token')) {
+      watch: {
+          if (localStorage.getItem('token')) {
             this.isAuthenticated = true;
-        }
+          }
+      }
     },
     methods: {
         logout() {

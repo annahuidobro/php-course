@@ -19500,8 +19500,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   beforeMount: function beforeMount() {
-    if (localStorage.getItem('token')) {
-      this.isAuthenticated = true;
+    watch: {
+      if (localStorage.getItem('token')) {
+        this.isAuthenticated = true;
+      }
     }
   },
   methods: {
@@ -19689,13 +19691,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   beforeMount: function beforeMount() {
     //Token
-    if (localStorage.getItem('token')) {
-      this.isAuthenticated = true;
-    } else {
-      this.isAuthenticated = false;
-      this.$router.push({
-        name: 'login'
-      });
+    watch: {
+      if (localStorage.getItem('token')) {
+        this.isAuthenticated = true;
+      } else {
+        this.isAuthenticated = false;
+        this.$router.push({
+          name: 'login'
+        });
+      }
     } //Username
 
 
@@ -19724,11 +19728,14 @@ __webpack_require__.r(__webpack_exports__);
       axios["delete"](url);
     },
     editUser: function editUser() {
-      alert(user_name);
-      /*  const url = `api/players/${user_id}`;
-        axios.put(url, this.user).then((response) => {
-           this.$router.push({name: 'user.name'});
-       })*/
+      var url = "api/players/".concat(this.userid);
+      axios.put(url, {
+        id: this.userid,
+        name: this.username
+      }).then(function (response) {//
+      })["catch"](function (error) {
+        alert(error);
+      });
     }
   }
 });
@@ -19874,6 +19881,7 @@ var _hoisted_6 = {
   "class": "nav nav-masthead justify-content-center float-md-end"
 };
 var _hoisted_7 = {
+  key: 0,
   "class": "nav-link"
 };
 
@@ -19884,12 +19892,12 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_4, [_hoisted_5, $data.isAuthenticated ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("nav", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_4, [_hoisted_5, $data.isAuthenticated ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("nav", _hoisted_6, [$data.isAuthenticated ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-sm",
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.logout && $options.logout.apply($options, arguments);
     })
-  }, "Logout")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_8])])]);
+  }, "Logout")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_8])])]);
 }
 
 /***/ }),
@@ -20087,7 +20095,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "container mt-3 mb-3 content"
+  "class": "container"
 };
 var _hoisted_2 = {
   "class": "row"
@@ -20127,7 +20135,9 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.username), 1
+  var _component_router_views = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-views");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.username), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -20156,7 +20166,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.username]])]), _hoisted_10], 32
   /* HYDRATE_EVENTS */
-  )])])]);
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_views)], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 /***/ }),
