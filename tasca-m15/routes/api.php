@@ -4,7 +4,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\RankingController;
-use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,12 +31,14 @@ Route::group([
 });
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'signUp']);
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 */
-//Route::post('/register', RegisterController::class);
+
 // Create a player
 Route::post('/players', [PlayersController::class, 'create'])->name('player-create');
 //Modify player name

@@ -27,9 +27,20 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return response()->json([
-            'message' => 'Successfully created user!',
-        ], 201);
+        $token = JWTAuth::attempt($request->only('email', 'password'));
+
+        if ($token) {
+            return response()->json([
+            'success' => true,
+            'token' => $token,
+            'user' => Auth::user(),
+        ], 200);
+        } else {
+            return response()->json([
+            'success' => false,
+            'error' => 'Unauthorized',
+        ], 401);
+        }
     }
 
     /**

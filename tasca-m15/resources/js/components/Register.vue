@@ -3,7 +3,7 @@
     <form action class="form" @submit.prevent="register">
       <label class="form-label first" for="#email">Email:</label>
       <input
-        v-model="email"
+        v-model="user.email"
         class="form-input"
         type="email"
         id="email"
@@ -12,7 +12,7 @@
       >
       <label class="form-label" for="#email">Name:</label>
       <input
-        v-model="name"
+        v-model="user.name"
         class="form-input"
         type="text"
         id="name"
@@ -21,7 +21,7 @@
       >
       <label class="form-label" for="#password">Password:</label>
       <input
-        v-model="password"
+        v-model="user.password"
         class="form-input"
         type="password"
         id="password"
@@ -29,7 +29,7 @@
       >
       <label class="form-label" for="#password-repeat">Repeat password:</label>
       <input
-        v-model="passwordRepeat"
+        v-model="user.passwordRepeat"
         class="form-input"
         type="password"
         id="password-repeat"
@@ -43,21 +43,33 @@
 <script>
 
 export default {
-  data: () => ({
-    email: "",
-    name: "",
-    password: "",
-    passwordRepeat: "",
-    error: false
-  }),
+  data() {
+        return {
+            user: {
+                  email: "",
+                  name: "",
+                  password: "",
+                  passwordRepeat: ""
+              },
+              error: false
+            }
+        },      
   methods: {
     async register() {
       try {
-        await auth.register(this.email, this.password);
-        this.$router.push("/")
-      } catch (error) {
-        console.log(error);
-      }
+                  let currentUrl = window.location.href.replace('login', '');
+                  let url =  `${currentUrl}api/register`;
+
+                  axios.post(url, this.user)
+                  .then((response) => {
+                      localStorage.username = response.data.user.name
+                      localStorage.userid = response.data.user.id
+                      localStorage.token = response.data.token
+                      this.$router.push({name: 'home'})
+                  });
+            } catch {
+                error = true;
+            };
     }
   }
 };
