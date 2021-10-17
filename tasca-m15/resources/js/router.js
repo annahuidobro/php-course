@@ -1,7 +1,6 @@
 import Home from "./components/HomeComponent";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import PlayComponent from "./components/PlayComponent"
 import { createRouter, createWebHistory } from "vue-router";
 
 const routeInfos = [
@@ -20,11 +19,6 @@ const routeInfos = [
       name: 'register',
       component: Register
   },
-  {
-      path: '/play',
-      name: 'play',
-      component: PlayComponent
-  }
 ]
 
 const router = createRouter({
