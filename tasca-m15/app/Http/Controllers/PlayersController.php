@@ -97,7 +97,7 @@ class PlayersController extends Controller
         return response()->json([
             'success' => true,
             'user' => $id,
-            'results' => $user_resoults,
+            'resoults' => $user_resoults,
         ]);
     }
 }

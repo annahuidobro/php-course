@@ -25,7 +25,7 @@ class RankingController extends Controller
 
         return response()->json(
             [
-                'success' => true, '% total games sucess' => round($totalsuccessfulgames, 2), 'sumSuccess' => $sumSuccess, 'TotalPlays' => $userTotalPlays,
+                'success' => true, 'total_average' => round($totalsuccessfulgames, 2), 'sum_success' => $sumSuccess, 'total_plays' => $userTotalPlays,
             ],
             200
         );
@@ -65,7 +65,7 @@ class RankingController extends Controller
 
         return response()->json(
             [
-                'success' => true, 'loser player_id' => $loser, '%succesful of loser' => $miniumResult,
+                'success' => true, 'loser_player' => $loser, 'loser_succes' => $miniumResult,
             ],
             200
         );
@@ -104,7 +104,7 @@ class RankingController extends Controller
 
         return response()->json(
             [
-                'success' => true, 'winner player id is' => $player, '% successful of the winner' => $maximResult,
+                'success' => true, 'winner_player' => $player, 'percent_succes_winner' => $maximResult,
             ],
             200
         );

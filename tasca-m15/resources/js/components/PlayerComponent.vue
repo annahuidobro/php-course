@@ -6,6 +6,19 @@
                     <p class="welcome">Welcome back <strong>{{ username }}</strong></p>
 
                     <button @click="play(userid)" type="button" class="btn play btn-sm btn-outline-secondary">PLAY</button>
+                        <div v-if="is_played">
+                            <h1 v-if="game.success">You win!</h1>
+                            <h1 v-else>You lose :(</h1>
+                            <p>Dice #1: <span><strong>{{ game.dice1 }}</strong></span></p>
+                            <p>Dice #2: <span><strong>{{ game.dice2 }}</strong></span></p>
+                        </div>
+
+                    <div class="center">
+                        <p>Player resoluts</p>
+                        <p>Player succes: {{games.success}}</p>
+                        <p>User Id: {{games.user}}</p>
+                        <p>Player resoults: {{games.resoluts}}</p>
+                    </div>
                 </div>
                 <div class="col-6">
                     <h3>Setup profile</h3>  
@@ -30,7 +43,19 @@ export default {
         return {
                 username: '',
                 userid: '',
-        };
+                games: {
+                    succes: '',
+                    user: '',
+                    resoults: []
+                },
+                game: {
+                    user_id: '',
+                    dice1: '' ,
+                    dice2: '' ,
+                    success: ''
+                },
+                is_played: false
+        }
     },
     beforeMount() {
         //Token
@@ -46,6 +71,13 @@ export default {
         if (localStorage.getItem('username')) {
             this.username = localStorage.getItem('username');
             this.userid = localStorage.getItem('userid');
+
+            const url=`api/players/${this.userid}/games`;
+
+            axios.get(url)
+            .then((response) => {
+                this.games = response.data;
+            });
         } else {
             this.username = '';
         }
@@ -55,8 +87,10 @@ export default {
             let currentUrl = window.location.href;
             let url =  `${currentUrl}api/players/${user_id}/games`;
 
-            axios.post(url).then(() => {
-                this.$router.push({name: 'home'})
+            axios.post(url)
+            .then((response) => {
+                this.game = response.data.game;
+                this.is_played = true;
             });
         },
         delete_games(user_id) {
@@ -72,9 +106,8 @@ export default {
            }).catch((error) => {
                alert(error);
            });
-        }
+        },
     }
-
 }
 </script>
 
@@ -99,5 +132,8 @@ export default {
     }
     .btn:hover {
         background-color: #3f5df0;
+    }
+    .center {
+        text-align:center;
     }
 </style>

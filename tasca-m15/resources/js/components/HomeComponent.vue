@@ -19,6 +19,7 @@
         <div v-else class="row">
             <player-component></player-component>
             <table-component></table-component>
+            <general-rankings></general-rankings>
         </div>
     </div>
     
@@ -32,6 +33,8 @@ import Login from './Login.vue'
 import PlayerComponent from './PlayerComponent'
 import Register from './Register.vue'
 import TableComponent from './TableComponent'
+import GeneralRankins from './GeneralRankings'
+import GeneralRankings from './GeneralRankings.vue'
 
 export default {
     components: {
@@ -40,6 +43,7 @@ export default {
         TableComponent,
         Login,
         Register,
+        GeneralRankings,
     },
     data() {       
         return {
