@@ -18,8 +18,8 @@
         </div>
         <div v-else class="row">
             <player-component></player-component>
-            <table-component></table-component>
             <general-rankings></general-rankings>
+            <table-component></table-component>
         </div>
     </div>
     

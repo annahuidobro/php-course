@@ -1,8 +1,8 @@
 <template>
-<div class="container">
-
-            <div class="row">
-                <div class="col-6">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6">
+                <div class="col-12 bg-trans">
                     <p class="welcome">Welcome back <strong>{{ username }}</strong></p>
 
                     <button @click="play(userid)" type="button" class="btn play btn-sm btn-outline-secondary">PLAY</button>
@@ -13,28 +13,38 @@
                             <p>Dice #2: <span><strong>{{ game.dice2 }}</strong></span></p>
                         </div>
 
-                    <div class="center">
-                        <p>Player resoluts</p>
-                        <p>Player succes: {{games.success}}</p>
-                        <p>User Id: {{games.user}}</p>
-                        <p>Player resoults: {{games.resoluts}}</p>
+                    <div class="center player-results">
+                        <p>Player results</p>
+                        <div v-for="result in games.resoults" :key="result.id">
+                            <span v-if="result === 7" class="green">{{ result }}</span>
+                            <span v-else>{{ result }}</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <h3>Setup profile</h3>  
-                    <button @click="delete_games(userid)" type="button" class="btn btn-sm btn-outline-secondary">Delete user games</button>
-
-                    <form v-on:submit.prevent="editUser()">
-                        <div class="form-group">
-                            <label for="name">Change user name:</label>
-                            <input type="text" class="form-control" id="name" v-model="username">
-                        </div>
-                        <button type="submit" class="btn btn-secondary">Submit</button>
-                    </form>
-                </div>
             </div>
-        </div>    
-        <router-views></router-views>
+            <div class="col-6 bg-trans">
+                <h3>Setup profile</h3>  
+                <button @click="delete_games(userid)" type="button" class="btn btn-sm btn-outline-secondary mt-3">Delete user games</button>
+
+                <form v-on:submit.prevent="editUser()" class="mt-5">
+                    <label for="name">Change user name:</label>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" v-model="username">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-secondary btn-long">Change</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+    <router-views></router-views>
 </template>
 
 <script>
@@ -117,6 +127,7 @@ export default {
     }
     .welcome {
         text-align: center;
+        font-size: 25px;
     }
     .play {
         cursor: pointer;
@@ -135,5 +146,36 @@ export default {
     }
     .center {
         text-align:center;
+    }
+    .bg-trans {
+        background-color: #b9b9b94d;
+        border-radius: 20px;
+        padding: 25px;
+    }
+    .player-results {
+        display: inline-block;
+    }
+    .player-results p {
+        margin-bottom: 0;
+        margin-top: 40px;
+    }
+    .player-results div {
+        float: left;
+        margin: 0 5px;
+        padding: 12px 0;
+    }
+    .player-results span {
+        background-color: #ff5454;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+    }
+    .player-results span.green {
+        background-color: #00b700;
+    }
+    .btn-long {
+        width: 100%;
+        height: 40px;
+        padding: 0;
     }
 </style>

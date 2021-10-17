@@ -35,14 +35,16 @@
 				users:[]
 			}
 		},
-		mounted() {	
-			let currentUrl = window.location.href;
-			let url =  `${currentUrl}api/players`;
-			
-			axios.get(url)
-			.then((response) => {
-               this.users = response.data.users
-            });
+		beforeMount() {
+			watch: {
+				let currentUrl = window.location.href;
+				let url =  `${currentUrl}api/players`;
+				
+				axios.get(url)
+				.then((response) => {
+					this.users = response.data.users
+				});
+			}
 		}
 
 	}

@@ -71,7 +71,7 @@ class PlayersController extends Controller
                 'id' => $user->id,
                 'name' => $user->name,
                 'tries' => $userTotalPlays,
-                'ranking' => $ranking,
+                'ranking' => round($ranking, 2),
                 'last_game' => $lastGame->format('M d Y'),
             ];
         }

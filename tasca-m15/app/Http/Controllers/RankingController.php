@@ -36,6 +36,7 @@ class RankingController extends Controller
         $users = User::all();
         $loser = 0;
         $userSuccessfulGames = [];
+        $playerName = [];
 
         foreach ($users as $user) {
             $games = Game::where('user_id', $user->id)->get();
@@ -52,6 +53,8 @@ class RankingController extends Controller
             } else {
                 $userSuccessfulGames[$user->id] = 0;
             }
+
+            $playerName[$user->id] = $user->name;
         }
 
         $miniumResult = 101;
@@ -65,7 +68,7 @@ class RankingController extends Controller
 
         return response()->json(
             [
-                'success' => true, 'loser_player' => $loser, 'loser_succes' => $miniumResult,
+                'success' => true, 'loser_player' => $playerName[$loser], 'loser_succes' => $miniumResult,
             ],
             200
         );
@@ -76,6 +79,7 @@ class RankingController extends Controller
         $users = User::all();
         $loser = 0;
         $userSuccessfulGames = [];
+        $playerName = [];
 
         foreach ($users as $user) {
             $games = Game::where('user_id', $user->id)->get();
@@ -92,7 +96,9 @@ class RankingController extends Controller
             } else {
                 $userSuccessfulGames[$user->id] = 0;
             }
+            $playerName[$user->id] = $user->name;
         }
+
         $maximResult = 0;
         $player = null;
         foreach ($userSuccessfulGames as $user => $result) {
@@ -104,7 +110,7 @@ class RankingController extends Controller
 
         return response()->json(
             [
-                'success' => true, 'winner_player' => $player, 'percent_succes_winner' => $maximResult,
+                'success' => true, 'winner_player' => $playerName[$player], 'percent_succes_winner' => $maximResult,
             ],
             200
         );
