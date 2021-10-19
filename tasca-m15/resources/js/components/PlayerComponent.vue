@@ -15,7 +15,7 @@
 
                     <div class="center player-results">
                         <p>Player results</p>
-                        <div v-for="result in games.resoults" :key="result.id">
+                        <div v-for="result in currentGames" :key="result.id">
                             <span v-if="result === 7" class="green">{{ result }}</span>
                             <span v-else>{{ result }}</span>
                         </div>
@@ -41,6 +41,7 @@
                         </div>
                     </div>
                 </form>
+                <h1>{{currentGames()}}</h1>
             </div>
         </div>
     </div>    
@@ -78,19 +79,7 @@ export default {
             }
         }
         //Username
-        if (localStorage.getItem('username')) {
-            this.username = localStorage.getItem('username');
-            this.userid = localStorage.getItem('userid');
-
-            const url=`api/players/${this.userid}/games`;
-
-            axios.get(url)
-            .then((response) => {
-                this.games = response.data;
-            });
-        } else {
-            this.username = '';
-        }
+        this.getGames();
     },
     methods: {
         play(user_id) {
@@ -101,6 +90,7 @@ export default {
             .then((response) => {
                 this.game = response.data.game;
                 this.is_played = true;
+                this.getGames();
             });
         },
         delete_games(user_id) {
@@ -117,6 +107,23 @@ export default {
                alert(error);
            });
         },
+        getGames(){
+            this.username = localStorage.getItem('username');
+            this.userid = localStorage.getItem('userid');
+
+            const url=`api/players/${this.userid}/games`;
+
+            axios.get(url)
+            .then((response) => {
+                this.games = response.data;
+            });
+        }
+    },
+    computed: {
+        currentGames(){
+            console.log(this.games.resoults);
+            return this.games.resoults;
+        }
     }
 }
 </script>
