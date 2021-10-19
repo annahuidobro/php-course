@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //JWT uthentication routes
 
 Route::group([
-    'middleware' => 'api',
+    'middleware' => 'jwt.auth',
     'prefix' => 'auth',
 ], function ($router) {
     Route::post('/logout', [AuthController::class, 'logout']);
