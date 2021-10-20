@@ -15,7 +15,7 @@
 
                     <div class="center player-results">
                         <p>Player results</p>
-                        <div v-for="result in currentGames" :key="result.id">
+                        <div v-for="result in games.resoults" :key="result.id">
                             <span v-if="result === 7" class="green">{{ result }}</span>
                             <span v-else>{{ result }}</span>
                         </div>
@@ -41,7 +41,6 @@
                         </div>
                     </div>
                 </form>
-                <h1>{{currentGames()}}</h1>
             </div>
         </div>
     </div>    
@@ -82,6 +81,21 @@ export default {
         this.getGames();
     },
     methods: {
+        getGames () {
+          if (localStorage.getItem('username')) {
+                this.username = localStorage.getItem('username');
+                this.userid = localStorage.getItem('userid');
+
+                const url=`api/players/${this.userid}/games`;
+
+                axios.get(url)
+                .then((response) => {
+                    this.games = response.data;
+                });
+            } else {
+                this.username = '';
+            }  
+        },
         play(user_id) {
             let currentUrl = window.location.href;
             let url =  `${currentUrl}api/players/${user_id}/games`;
@@ -107,23 +121,6 @@ export default {
                alert(error);
            });
         },
-        getGames(){
-            this.username = localStorage.getItem('username');
-            this.userid = localStorage.getItem('userid');
-
-            const url=`api/players/${this.userid}/games`;
-
-            axios.get(url)
-            .then((response) => {
-                this.games = response.data;
-            });
-        }
-    },
-    computed: {
-        currentGames(){
-            console.log(this.games.resoults);
-            return this.games.resoults;
-        }
     }
 }
 </script>
